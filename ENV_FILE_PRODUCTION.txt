@@ -1,0 +1,44 @@
+# ============================================
+# Patient Registration System - Production .env File
+# Subdomain: nghc.nextgenproductlabs.com
+# ============================================
+# 
+# INSTRUCTIONS:
+# 1. Copy this entire content
+# 2. In hPanel File Manager, go to: public_html/api/
+# 3. Create new file: .env
+# 4. Paste this content
+# 5. Replace MongoDB and Email placeholders with your actual values
+# 6. Save the file
+# 7. Restart Node.js application in hPanel
+#
+# ============================================
+
+# MongoDB Connection
+# Replace with your actual MongoDB connection string
+MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/NHS_NPMS?retryWrites=true&w=majority
+
+# Smarty Streets API - Address Verification
+# Secret Keys (Server-Side) - CONFIGURED AND READY TO USE
+SMARTY_AUTH_ID=1661d522-1b74-452f-bb63-463bdedd9fa3
+SMARTY_AUTH_TOKEN=SZkQ3ygTc5hiVL6RC9KR
+
+# Smarty Streets Embedded Key (Client-Side - for future use if needed)
+SMARTY_EMBEDDED_KEY=254574191005277116
+
+# Email Configuration (Gmail)
+# Use Gmail App Password, not regular password
+# Generate at: https://myaccount.google.com/apppasswords
+EMAIL_USER=your-email@gmail.com
+EMAIL_PASSWORD=your-gmail-app-password
+
+# Server Configuration
+NODE_ENV=production
+PORT=3000
+
+# Frontend URL (for CORS)
+# Subdomain: nghc.nextgenproductlabs.com
+FRONTEND_URL=https://nghc.nextgenproductlabs.com
+
+# Note: VITE_API_URL is not needed - using relative path /api
+

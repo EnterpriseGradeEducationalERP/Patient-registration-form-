@@ -58,14 +58,22 @@ Then upload:
 Copy this content (update with your values):
 
 ```env
+# MongoDB Connection
 MONGODB_URI=your-mongodb-connection-string
+
+# Smarty Streets API - Address Verification (CONFIGURED)
+SMARTY_AUTH_ID=1661d522-1b74-452f-bb63-463bdedd9fa3
+SMARTY_AUTH_TOKEN=SZkQ3ygTc5hiVL6RC9KR
+SMARTY_EMBEDDED_KEY=254574191005277116
+
+# Email Configuration
+EMAIL_USER=your-email@gmail.com
+EMAIL_PASSWORD=your-gmail-app-password
+
+# Server Configuration
 NODE_ENV=production
 PORT=3000
 FRONTEND_URL=https://nghc.nextgenproductlabs.com
-SMARTY_AUTH_ID=1661d522-1b74-452f-bb63-463bdedd9fa3
-SMARTY_AUTH_TOKEN=SZkQ3ygTc5hiVL6RC9KR
-EMAIL_USER=your-email@gmail.com
-EMAIL_PASSWORD=your-gmail-app-password
 ```
 
 ---
