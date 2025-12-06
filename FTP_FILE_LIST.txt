@@ -1,0 +1,79 @@
+================================================================================
+  COMPLETE FILE LIST FOR FTP UPLOAD
+  nghc.nextgenproductlabs.com
+================================================================================
+
+FTP CONNECTION:
+---------------
+Host: 82.180.140.60
+Username: u475081356.nghc.nextgenproductlabs.com
+Password: 996699@Admin
+Port: 21
+Root: public_html/
+
+================================================================================
+  FRONTEND FILES
+  Upload to: public_html/
+================================================================================
+
+FROM: dist/
+  [ ] dist/index.html → public_html/index.html
+  [ ] dist/favicon.ico → public_html/favicon.ico
+  [ ] dist/assets/ (entire folder) → public_html/assets/
+    - assets/index-210a054a.js
+    - assets/index-41e4e7e2.css
+
+FROM: Project Root
+  [ ] .htaccess → public_html/.htaccess
+  [ ] test-api-connection.html → public_html/test-api-connection.html
+
+================================================================================
+  BACKEND FILES
+  Upload to: public_html/api/
+================================================================================
+
+FROM: Project Root
+  [ ] server.cjs → public_html/api/server.cjs
+  [ ] api-package.json → public_html/api/package.json (rename after upload)
+
+FROM: server/services/
+  [ ] server/services/pharmacyService.cjs → public_html/api/server/services/pharmacyService.cjs
+  [ ] server/services/smartyService.cjs → public_html/api/server/services/smartyService.cjs
+  [ ] server/services/uspsAddresses3Service.cjs → public_html/api/server/services/uspsAddresses3Service.cjs
+  [ ] server/services/uspsService.cjs → public_html/api/server/services/uspsService.cjs
+
+================================================================================
+  CREATE ON SERVER
+  Location: public_html/api/
+================================================================================
+
+  [ ] Create folder: public_html/api/
+  [ ] Create folder: public_html/api/server/
+  [ ] Create folder: public_html/api/server/services/
+  [ ] Create file: public_html/api/.env (use content from ENV_FILE_PRODUCTION.txt)
+
+================================================================================
+  VERIFICATION CHECKLIST
+================================================================================
+
+FRONTEND (public_html/):
+  [ ] index.html
+  [ ] favicon.ico
+  [ ] assets/index-210a054a.js
+  [ ] assets/index-41e4e7e2.css
+  [ ] .htaccess
+  [ ] test-api-connection.html
+
+BACKEND (public_html/api/):
+  [ ] server.cjs
+  [ ] package.json
+  [ ] .env
+  [ ] server/services/pharmacyService.cjs
+  [ ] server/services/smartyService.cjs
+  [ ] server/services/uspsAddresses3Service.cjs
+  [ ] server/services/uspsService.cjs
+
+================================================================================
+  TOTAL FILES TO UPLOAD: 12 files + 3 folders
+================================================================================
+

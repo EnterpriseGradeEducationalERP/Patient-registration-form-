@@ -1,0 +1,67 @@
+================================================================================
+  QUICK FTP UPLOAD GUIDE
+  nghc.nextgenproductlabs.com
+================================================================================
+
+FTP CONNECTION:
+---------------
+Host: 82.180.140.60
+Username: u475081356.nghc.nextgenproductlabs.com
+Password: 996699@Admin
+Port: 21
+
+================================================================================
+  UPLOAD THESE FILES
+================================================================================
+
+1. FRONTEND (to public_html/):
+   - dist/index.html
+   - dist/favicon.ico
+   - dist/assets/ (entire folder)
+   - .htaccess (from root)
+   - test-api-connection.html (from root)
+
+2. BACKEND (to public_html/api/):
+   - server.cjs
+   - api-package.json (rename to package.json after upload)
+   - server/services/pharmacyService.cjs
+   - server/services/smartyService.cjs
+   - server/services/uspsAddresses3Service.cjs
+   - server/services/uspsService.cjs
+
+3. CREATE .env FILE (in public_html/api/):
+   Copy content from ENV_FILE_PRODUCTION.txt
+
+================================================================================
+  .ENV FILE CONTENT (Copy this to public_html/api/.env)
+================================================================================
+
+MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/NHS_NPMS?retryWrites=true&w=majority
+SMARTY_AUTH_ID=1661d522-1b74-452f-bb63-463bdedd9fa3
+SMARTY_AUTH_TOKEN=SZkQ3ygTc5hiVL6RC9KR
+SMARTY_EMBEDDED_KEY=254574191005277116
+EMAIL_USER=asifkhanpathan899@gmail.com
+EMAIL_PASSWORD=Asif@090itj
+NODE_ENV=production
+PORT=3000
+FRONTEND_URL=https://nghc.nextgenproductlabs.com
+
+⚠️ IMPORTANT: Replace MONGODB_URI with your actual MongoDB connection string!
+
+================================================================================
+  AFTER UPLOAD
+================================================================================
+
+1. Configure Node.js in hPanel:
+   - Application URL: nghc.nextgenproductlabs.com/api
+   - Application Root: /api or /public_html/api
+   - Startup File: server.cjs
+
+2. Install dependencies: cd /api && npm install
+
+3. Start Node.js application
+
+4. Test: https://nghc.nextgenproductlabs.com/api/health
+
+================================================================================
+
