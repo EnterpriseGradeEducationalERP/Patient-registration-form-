@@ -39,6 +39,15 @@ export const searchPharmacies = async (zipCode) => {
       }
     });
 
+    // Check if response is HTML (404 page) instead of JSON
+    const contentType = response.headers.get('content-type');
+    if (!contentType || !contentType.includes('application/json')) {
+      const text = await response.text();
+      if (text.trim().startsWith('<!DOCTYPE') || text.trim().startsWith('<html')) {
+        throw new Error('API endpoint returned HTML page. Please check Node.js configuration in hPanel. Application URL must include /api');
+      }
+    }
+
     const result = await response.json();
 
     if (!response.ok) {

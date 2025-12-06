@@ -56,14 +56,27 @@ export const verifyAddress = async (address) => {
       throw new Error('Empty response from server');
     }
 
+    // Check if response is HTML (404 page) instead of JSON
+    if (text.trim().startsWith('<!DOCTYPE') || text.trim().startsWith('<html')) {
+      console.error('❌ Received HTML instead of JSON. API routing issue!');
+      throw new Error('API endpoint returned HTML page. Please check Node.js configuration in hPanel. Application URL must include /api');
+    }
+
     const result = JSON.parse(text);
     return result;
   } catch (error) {
     console.error('Address verification failed:', error);
+    
+    // Provide helpful error message for HTML response
+    let errorMessage = error.message || 'Failed to verify address';
+    if (error.message.includes('HTML') || error.message.includes('<!DOCTYPE')) {
+      errorMessage = 'API routing error: Node.js is not configured correctly. Please check hPanel Node.js settings - Application URL must be: nghc.nextgenproductlabs.com/api';
+    }
+    
     return {
       success: false,
       verified: false,
-      error: error.message || 'Failed to verify address',
+      error: errorMessage,
       address: null
     };
   }
