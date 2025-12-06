@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles from your original styles.css */
+.step-icon {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-width: 2px;
+    color: #6b7280;
+    transition-property: color, background-color, border-color;
+    transition-duration: 300ms;
+    position: relative;
+    z-index: 20;
+}
+
+.step-icon.inactive {
+    background-color: #fff;
+    border-color: #9ca3af;
+    color: #6b7280;
+}
+
+.step-icon.active {
+    background-color: #9333ea;
+    border-color: #9333ea;
+    color: #fff;
+}
+
+.step-icon.completed {
+    background-color: #16a34a;
+    border-color: #16a34a;
+    color: #fff;
+}
+
+.step-icon.error {
+    background-color: #ef4444;
+    border-color: #dc2626;
+    color: white;
+}
+
+.step-icon.editing {
+    background-color: #f59e0b;
+    border-color: #d97706;
+    color: white;
+}
+
+.step-icon i {
+    font-size: 1.25rem;
+}
+
+.sig-preview {
+    max-height: 40px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.not-signed {
+    color: #ef4444;
+    font-style: italic;
+}
+
+.transition-transform {
+  transition: transform 0.3s ease;
+}
+
+.review-field-link {
+    transition: all 0.2s ease-in-out;
+}
+
+.review-field-link:hover {
+    transform: translateX(2px);
+}
+
+/* Custom file input styling */
+input[type="file"] {
+    padding: 0.5rem;
+}
+
+/* Smooth transitions */
+.step-content {
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Focus states */
+input:focus, select:focus, textarea:focus {
+    box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.1);
+}
+
+/* Custom checkbox styling */
+input[type="checkbox"] {
+    accent-color: #9333ea;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .step-icon {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+    
+    .step-icon i {
+        font-size: 1rem;
+    }
+}

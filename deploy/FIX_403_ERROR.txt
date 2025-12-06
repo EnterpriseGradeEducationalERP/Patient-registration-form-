@@ -1,0 +1,81 @@
+================================================================================
+  🔧 QUICK FIX FOR 403 ERROR
+================================================================================
+
+If you're getting a 403 Forbidden error, follow these steps:
+
+================================================================================
+  STEP 1: CHECK FILE PERMISSIONS (MOST COMMON FIX)
+================================================================================
+
+1. Login to hPanel → Files → File Manager
+2. Go to public_html/ folder
+3. Select all files
+4. Right-click → Change Permissions
+5. Set:
+   - Files: 644
+   - Folders: 755
+   - Check "Recurse into subdirectories"
+6. Click "Change Permissions"
+
+================================================================================
+  STEP 2: SIMPLIFY .HTACCESS
+================================================================================
+
+If Step 1 doesn't work:
+
+1. In File Manager, go to public_html/
+2. Rename current .htaccess to .htaccess.backup
+3. Rename .htaccess.simple to .htaccess
+4. Test your site
+
+OR use the minimal version:
+- Rename .htaccess.minimal to .htaccess
+
+================================================================================
+  STEP 3: VERIFY FILE STRUCTURE
+================================================================================
+
+Make sure these files exist in public_html/:
+✓ index.html
+✓ .htaccess
+✓ assets/ folder
+✓ assets/index-*.css
+✓ assets/index-*.js
+
+================================================================================
+  STEP 4: TEST WITHOUT .HTACCESS
+================================================================================
+
+1. Rename .htaccess to .htaccess.test
+2. Try accessing your site
+3. If it works → problem is in .htaccess
+4. If it doesn't → problem is file permissions
+
+================================================================================
+  STEP 5: CHECK SERVER LOGS
+================================================================================
+
+1. In hPanel → Advanced → Error Log
+2. Look for permission errors
+3. Note the specific error message
+4. Use that to fix the issue
+
+================================================================================
+  MOST COMMON SOLUTIONS
+================================================================================
+
+90% of 403 errors are fixed by:
+1. Setting correct file permissions (644/755)
+2. Using simplified .htaccess file
+
+Try these first!
+
+================================================================================
+  NEED MORE HELP?
+================================================================================
+
+See: TROUBLESHOOTING_403.md for detailed solutions
+
+================================================================================
+

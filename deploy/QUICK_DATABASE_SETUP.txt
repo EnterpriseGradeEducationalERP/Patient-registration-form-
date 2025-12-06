@@ -1,0 +1,123 @@
+================================================================================
+  🗄️ QUICK DATABASE SETUP - MongoDB Atlas
+================================================================================
+
+Follow these steps to connect your database:
+
+================================================================================
+  STEP 1: CREATE MONGODB ATLAS ACCOUNT (5 minutes)
+================================================================================
+
+1. Go to: https://www.mongodb.com/cloud/atlas
+2. Click "Try Free" or "Sign Up"
+3. Create account (can use Google/GitHub)
+4. Verify email
+
+================================================================================
+  STEP 2: CREATE CLUSTER (5 minutes)
+================================================================================
+
+1. Click "Build a Database"
+2. Choose: M0 Sandbox (FREE) - No credit card needed!
+3. Select cloud provider (AWS/Google/Azure)
+4. Choose region closest to your server
+5. Cluster name: patient-registration-cluster
+6. Click "Create Cluster"
+7. Wait 3-5 minutes
+
+================================================================================
+  STEP 3: CREATE DATABASE USER (2 minutes)
+================================================================================
+
+1. Go to: Security → Database Access
+2. Click "Add New Database User"
+3. Username: nhs_admin
+4. Password: Generate secure password (SAVE IT!)
+5. Privileges: "Read and write to any database"
+6. Click "Add User"
+
+================================================================================
+  STEP 4: CONFIGURE NETWORK ACCESS (1 minute)
+================================================================================
+
+1. Go to: Security → Network Access
+2. Click "Add IP Address"
+3. Click "Allow Access from Anywhere" (0.0.0.0/0)
+4. Click "Confirm"
+
+================================================================================
+  STEP 5: GET CONNECTION STRING (2 minutes)
+================================================================================
+
+1. Go to: Clusters → Click "Connect"
+2. Select: "Connect your application"
+3. Driver: Node.js, Version: 5.5+
+4. Copy connection string:
+   mongodb+srv://<username>:<password>@cluster0.xxxxx.mongodb.net/...
+
+5. UPDATE IT:
+   - Replace <username> with: nhs_admin
+   - Replace <password> with: your-password
+   - Add database name: /NHS_NPMS
+   
+   Final:
+   mongodb+srv://nhs_admin:your-password@cluster0.xxxxx.mongodb.net/NHS_NPMS?retryWrites=true&w=majority
+
+================================================================================
+  STEP 6: ADD TO .ENV FILE ON SERVER (2 minutes)
+================================================================================
+
+1. Login to Hostinger hPanel
+2. Go to: Files → File Manager
+3. Navigate to: public_html/api/
+4. Open or create: .env file
+5. Add this line:
+   MONGODB_URI=mongodb+srv://nhs_admin:your-password@cluster0.xxxxx.mongodb.net/NHS_NPMS?retryWrites=true&w=majority
+
+6. Replace with your actual connection string
+7. Save file
+
+================================================================================
+  STEP 7: RESTART NODE.JS APPLICATION (1 minute)
+================================================================================
+
+1. Go to: Advanced → Node.js
+2. Find your application
+3. Click "Restart"
+4. Check logs - should see:
+   🗄️ MongoDB Connected: cluster0.xxxxx.mongodb.net
+   📊 Database: NHS_NPMS
+
+================================================================================
+  STEP 8: TEST CONNECTION (1 minute)
+================================================================================
+
+1. Visit: https://yourdomain.com/api/health
+2. Should show: "mongodb": "connected"
+3. If not, check logs for errors
+
+================================================================================
+  ✅ DONE!
+================================================================================
+
+Your database is now connected and ready to store patient data!
+
+Total time: ~15-20 minutes
+
+================================================================================
+  🆘 TROUBLESHOOTING
+================================================================================
+
+Connection failed?
+- Check username/password are correct
+- Verify network access allows your IP (or 0.0.0.0/0)
+- Check connection string format
+- Ensure database name is included: /NHS_NPMS
+
+Still having issues?
+- See: DATABASE_CONNECTION_GUIDE.md for detailed help
+- Check MongoDB Atlas dashboard
+- Review server logs in Node.js Manager
+
+================================================================================
+

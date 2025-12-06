@@ -1,0 +1,96 @@
+================================================================================
+  🚨 QUICK FIX: API 404 ERROR
+================================================================================
+
+EXACT ISSUE:
+------------
+Apache receives: /api/verify-address
+Apache doesn't know to forward it to Node.js
+Apache returns: 404 "This Page Does Not Exist"
+
+ROOT CAUSE:
+-----------
+Node.js application is not configured to handle /api/* routes in hPanel
+
+================================================================================
+  ⚡ QUICKEST FIX (2 minutes)
+================================================================================
+
+STEP 1: Check Node.js Application
+----------------------------------
+1. Login to hPanel
+2. Go to: Advanced → Node.js
+3. Find your application
+4. Check status: Should be "Running"
+
+STEP 2: Configure Application URL
+----------------------------------
+In Node.js Manager, set:
+- Application URL: yourdomain.com/api
+  OR
+- Application Path: /api
+
+STEP 3: Test
+------------
+Visit: https://yourdomain.com/api/health
+
+Should return JSON:
+{
+  "status": "ok",
+  "mongodb": "connected"
+}
+
+If JSON → FIXED! ✅
+If 404 → Continue to Solution 2
+
+================================================================================
+  🔄 ALTERNATIVE FIX: Use Subdomain
+================================================================================
+
+STEP 1: Create Subdomain
+-------------------------
+1. hPanel → Domains → Subdomains
+2. Create: api.yourdomain.com
+3. Point to: public_html/api
+
+STEP 2: Configure Node.js
+--------------------------
+- Application URL: api.yourdomain.com
+- Application Root: /api
+
+STEP 3: Update Frontend
+------------------------
+Rebuild with: VITE_API_URL=https://api.yourdomain.com
+
+================================================================================
+  🔍 DIAGNOSTIC
+================================================================================
+
+Test these URLs to identify the issue:
+
+1. https://yourdomain.com/api/health
+   → If JSON: Node.js works, routing issue
+   → If 404: Node.js not configured correctly
+
+2. Check Node.js logs in hPanel
+   → Should see: "Server running on port 3000"
+   → If errors: Fix Node.js configuration first
+
+3. Browser Network tab (F12)
+   → See actual URL being called
+   → See response status and content
+
+================================================================================
+  ✅ MOST COMMON FIX
+================================================================================
+
+90% of cases: Set Application URL to include /api path in Node.js Manager
+
+Example:
+- Application URL: yourdomain.com/api
+- Application Root: /api or /public_html/api
+- Startup File: server.cjs
+
+================================================================================
+
+

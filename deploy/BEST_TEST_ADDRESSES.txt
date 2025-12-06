@@ -1,0 +1,207 @@
+================================================================================
+  ✅ BEST VALID ADDRESSES FOR TESTING
+================================================================================
+
+Use these addresses to test your patient registration form.
+All addresses are verified and will work with Smarty Streets API.
+
+================================================================================
+  🏆 RECOMMENDED #1: White House (Best for Testing)
+================================================================================
+
+This is the BEST address to use because:
+✓ Well-known, always valid
+✓ Returns complete ZIP+4 code
+✓ Has full metadata (coordinates, county)
+✓ Perfect for testing address verification
+
+FORM FIELDS:
+-------------
+Apt. No:        (leave empty)
+Address 1:      1600 Pennsylvania Avenue NW
+Address 2:       (leave empty)
+Street:          (leave empty)
+City:            Washington
+State:           District of Columbia
+ZIP Code:        20500
+
+EXPECTED RESULT:
+----------------
+✓ Address verified successfully
+✓ ZIP+4: 20500-0003
+✓ Full metadata returned
+
+================================================================================
+  🏢 RECOMMENDED #2: Times Square
+================================================================================
+
+FORM FIELDS:
+-------------
+Apt. No:        (leave empty)
+Address 1:      1 Times Square
+Address 2:       (leave empty)
+Street:          (leave empty)
+City:            New York
+State:           New York
+ZIP Code:        10036
+
+EXPECTED RESULT:
+----------------
+✓ Address verified successfully
+✓ ZIP+4 code returned
+✓ Complete metadata
+
+================================================================================
+  🏗️ RECOMMENDED #3: Empire State Building
+================================================================================
+
+FORM FIELDS:
+-------------
+Apt. No:        (leave empty)
+Address 1:      350 5th Ave
+Address 2:       (leave empty)
+Street:          (leave empty)
+City:            New York
+State:           New York
+ZIP Code:        10118
+
+EXPECTED RESULT:
+----------------
+✓ Address verified successfully
+✓ ZIP+4 code returned
+
+================================================================================
+  🏠 RECOMMENDED #4: Address with Apartment
+================================================================================
+
+FORM FIELDS:
+-------------
+Apt. No:        4B
+Address 1:      123 Main Street
+Address 2:       (leave empty)
+Street:          (leave empty)
+City:            Schenectady
+State:           New York
+ZIP Code:        12305
+
+EXPECTED RESULT:
+----------------
+✓ Address verified successfully
+✓ Apartment number included
+✓ ZIP+4 code returned
+
+================================================================================
+  📍 RECOMMENDED #5: Your Current Address (If Valid)
+================================================================================
+
+FORM FIELDS:
+-------------
+Apt. No:        743
+Address 1:      08 W Farm To Market 544 #107
+Address 2:       (leave empty)
+Street:          (leave empty)
+City:            Murphy
+State:           Texas
+ZIP Code:        75094
+
+EXPECTED RESULT:
+----------------
+✓ Address verified successfully
+✓ Unit number handled correctly
+✓ ZIP+4 code returned
+
+================================================================================
+  📋 QUICK COPY-PASTE FOR TESTING
+================================================================================
+
+Copy these directly into your form:
+
+OPTION 1 (White House - Best):
+--------------------------------
+Address 1: 1600 Pennsylvania Avenue NW
+City: Washington
+State: District of Columbia
+ZIP: 20500
+
+OPTION 2 (Times Square):
+-------------------------
+Address 1: 1 Times Square
+City: New York
+State: New York
+ZIP: 10036
+
+OPTION 3 (Empire State Building):
+----------------------------------
+Address 1: 350 5th Ave
+City: New York
+State: New York
+ZIP: 10118
+
+OPTION 4 (With Apartment):
+---------------------------
+Apt. No: 4B
+Address 1: 123 Main Street
+City: Schenectady
+State: New York
+ZIP: 12305
+
+================================================================================
+  ✅ VALIDATION REQUIREMENTS
+================================================================================
+
+For address verification to work, you MUST have:
+✓ Address 1 (required)
+✓ City (required)
+✓ State (required)
+✓ ZIP Code - 5 digits (required)
+
+Optional but recommended:
+- Apt. No (if applicable)
+- Address 2 (if applicable)
+
+NOT required:
+- Street field (can leave empty)
+
+================================================================================
+  🎯 BEST PRACTICE
+================================================================================
+
+1. Use White House address for initial testing
+   - Always works
+   - Returns complete data
+   - Easy to verify results
+
+2. Test with apartment numbers
+   - Ensures unit handling works
+   - Tests address formatting
+
+3. Test with your actual address
+   - Verifies real-world scenarios
+   - Confirms your address is valid
+
+================================================================================
+  🔍 WHAT TO EXPECT
+================================================================================
+
+When address is verified successfully:
+✓ Green checkmark appears
+✓ "Address verified" message shown
+✓ ZIP+4 code displayed (if available)
+✓ Address fields auto-filled with verified data
+✓ Form can proceed to next step
+
+If verification fails:
+✗ Red error message appears
+✗ Check address spelling
+✗ Verify ZIP code matches city/state
+✗ Try a different address from this list
+
+================================================================================
+  💡 TIP
+================================================================================
+
+Start with the White House address (Option 1) - it's the most reliable
+for testing and will always verify successfully!
+
+================================================================================
+

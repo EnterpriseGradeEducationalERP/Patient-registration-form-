@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Connection Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-box {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #1d4ed8;
+        }
+        .success {
+            color: #10b981;
+            background: #d1fae5;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .error {
+            color: #ef4444;
+            background: #fee2e2;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .info {
+            color: #3b82f6;
+            background: #dbeafe;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        pre {
+            background: #f3f4f6;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 12px;
+        }
+        h1 {
+            color: #1f2937;
+        }
+        h2 {
+            color: #4b5563;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 API Connection Diagnostic Test</h1>
+    <p>Use this page to test if your Node.js API is properly configured on Hostinger.</p>
+
+    <div class="test-box">
+        <h2>Test 1: Health Check Endpoint</h2>
+        <p>Tests if the basic API endpoint is accessible.</p>
+        <button onclick="testHealth()">Test /api/health</button>
+        <div id="health-result"></div>
+    </div>
+
+    <div class="test-box">
+        <h2>Test 2: Address Verification Endpoint</h2>
+        <p>Tests if the address verification API works.</p>
+        <button onclick="testAddressVerification()">Test /api/verify-address</button>
+        <div id="address-result"></div>
+    </div>
+
+    <div class="test-box">
+        <h2>Test 3: Check Current URL</h2>
+        <p>Shows what URL the page is running on.</p>
+        <button onclick="showCurrentUrl()">Show Current URL</button>
+        <div id="url-result"></div>
+    </div>
+
+    <div class="test-box">
+        <h2>Diagnostic Information</h2>
+        <div id="diagnostic-info"></div>
+    </div>
+
+    <script>
+        function showResult(elementId, message, isSuccess) {
+            const element = document.getElementById(elementId);
+            const className = isSuccess ? 'success' : 'error';
+            element.innerHTML = `<div class="${className}">${message}</div>`;
+        }
+
+        async function testHealth() {
+            const resultDiv = document.getElementById('health-result');
+            resultDiv.innerHTML = '<div class="info">Testing...</div>';
+
+            try {
+                const response = await fetch('/api/health');
+                const contentType = response.headers.get('content-type');
+                
+                if (contentType && contentType.includes('application/json')) {
+                    const data = await response.json();
+                    showResult('health-result', 
+                        `✅ SUCCESS! API is working.<br><pre>${JSON.stringify(data, null, 2)}</pre>`, 
+                        true
+                    );
+                } else {
+                    const text = await response.text();
+                    if (text.includes('This Page Does Not Exist') || text.includes('<!DOCTYPE html>')) {
+                        showResult('health-result', 
+                            `❌ FAILED! Getting HTML 404 page instead of JSON.<br><br>
+                            <strong>Issue:</strong> Node.js is not configured to handle /api routes.<br><br>
+                            <strong>Fix:</strong> Go to hPanel → Node.js Manager and set:<br>
+                            • Application URL: yourdomain.com/api<br>
+                            • Application Root: /api or /public_html/api<br>
+                            • Status: Running<br><br>
+                            See FIX_404_ERROR.md for detailed instructions.`, 
+                            false
+                        );
+                    } else {
+                        showResult('health-result', 
+                            `⚠️ Unexpected response:<br><pre>${text.substring(0, 500)}</pre>`, 
+                            false
+                        );
+                    }
+                }
+            } catch (error) {
+                showResult('health-result', 
+                    `❌ ERROR: ${error.message}<br><br>
+                    <strong>Possible causes:</strong><br>
+                    • Node.js application is not running<br>
+                    • CORS issue<br>
+                    • Network error<br><br>
+                    Check Node.js Manager logs in hPanel.`, 
+                    false
+                );
+            }
+        }
+
+        async function testAddressVerification() {
+            const resultDiv = document.getElementById('address-result');
+            resultDiv.innerHTML = '<div class="info">Testing...</div>';
+
+            try {
+                const response = await fetch('/api/verify-address', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        address1: '1600 Pennsylvania Ave NW',
+                        city: 'Washington',
+                        state: 'DC',
+                        zip5: '20500'
+                    })
+                });
+
+                const contentType = response.headers.get('content-type');
+                
+                if (contentType && contentType.includes('application/json')) {
+                    const data = await response.json();
+                    showResult('address-result', 
+                        `✅ SUCCESS! Address verification API is working.<br><pre>${JSON.stringify(data, null, 2)}</pre>`, 
+                        true
+                    );
+                } else {
+                    const text = await response.text();
+                    showResult('address-result', 
+                        `❌ FAILED! Getting HTML instead of JSON.<br><br>
+                        Node.js is not configured correctly. See FIX_404_ERROR.md`, 
+                        false
+                    );
+                }
+            } catch (error) {
+                showResult('address-result', 
+                    `❌ ERROR: ${error.message}`, 
+                    false
+                );
+            }
+        }
+
+        function showCurrentUrl() {
+            const url = window.location.href;
+            const baseUrl = window.location.origin;
+            document.getElementById('url-result').innerHTML = `
+                <div class="info">
+                    <strong>Current URL:</strong> ${url}<br>
+                    <strong>Base URL:</strong> ${baseUrl}<br>
+                    <strong>API Base URL:</strong> ${baseUrl}/api<br><br>
+                    Your API calls should go to: <code>${baseUrl}/api/*</code>
+                </div>
+            `;
+        }
+
+        // Show diagnostic info on load
+        window.onload = function() {
+            const info = `
+                <div class="info">
+                    <strong>Current Location:</strong> ${window.location.href}<br>
+                    <strong>API Endpoint:</strong> ${window.location.origin}/api/health<br>
+                    <strong>User Agent:</strong> ${navigator.userAgent}<br>
+                    <strong>Timestamp:</strong> ${new Date().toISOString()}<br><br>
+                    <strong>Instructions:</strong><br>
+                    1. Click "Test /api/health" first<br>
+                    2. If you get HTML 404, configure Node.js in hPanel<br>
+                    3. See FIX_404_ERROR.md for detailed fix instructions
+                </div>
+            `;
+            document.getElementById('diagnostic-info').innerHTML = info;
+        };
+    </script>
+</body>
+</html>
+

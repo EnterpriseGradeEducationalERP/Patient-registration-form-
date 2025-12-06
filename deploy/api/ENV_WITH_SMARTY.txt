@@ -1,0 +1,71 @@
+================================================================================
+  .ENV FILE TEMPLATE WITH SMARTY CREDENTIALS
+================================================================================
+
+Copy this content to create your .env file in public_html/api/ folder
+
+================================================================================
+
+# ============================================
+# Patient Registration System - Production Environment Variables
+# ============================================
+
+# MongoDB Connection
+# Option 1: MongoDB Atlas (Recommended)
+MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/NHS_NPMS?retryWrites=true&w=majority
+
+# Option 2: Hostinger MongoDB (if available)
+# MONGODB_URI=mongodb://username:password@host:port/NHS_NPMS
+
+# Smarty Streets API - Address Verification
+# ✅ YOUR CREDENTIALS (Ready to use)
+SMARTY_AUTH_ID=1661d522-1b74-452f-bb63-463bdedd9fa3
+SMARTY_AUTH_TOKEN=SZkQ3ygTc5hiVL6RC9KR
+
+# Email Configuration (Gmail)
+# Use Gmail App Password, not regular password
+# Generate at: https://myaccount.google.com/apppasswords
+EMAIL_USER=your-email@gmail.com
+EMAIL_PASSWORD=your-gmail-app-password
+
+# Server Configuration
+NODE_ENV=production
+PORT=3000
+
+# Frontend URL (for CORS)
+FRONTEND_URL=https://yourdomain.com
+
+# Note: VITE_API_URL is optional - defaults to /api (relative path)
+
+================================================================================
+  INSTRUCTIONS
+================================================================================
+
+1. Copy the content above
+2. In Hostinger File Manager, go to: public_html/api/
+3. Create new file: .env
+4. Paste the content
+5. Update:
+   - MONGODB_URI (with your MongoDB connection string)
+   - EMAIL_USER (your Gmail address)
+   - EMAIL_PASSWORD (your Gmail app password)
+   - FRONTEND_URL (your actual domain)
+6. Save the file
+7. Restart Node.js application in hPanel
+
+================================================================================
+  ALSO ADD TO NODE.JS MANAGER
+================================================================================
+
+In hPanel → Node.js Manager → Environment Variables, add:
+
+SMARTY_AUTH_ID = 1661d522-1b74-452f-bb63-463bdedd9fa3
+SMARTY_AUTH_TOKEN = SZkQ3ygTc5hiVL6RC9KR
+MONGODB_URI = (your MongoDB connection string)
+NODE_ENV = production
+PORT = 3000
+FRONTEND_URL = https://yourdomain.com
+
+================================================================================
+
+

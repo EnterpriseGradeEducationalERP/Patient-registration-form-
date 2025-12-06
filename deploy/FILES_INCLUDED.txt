@@ -1,0 +1,118 @@
+================================================================================
+  DEPLOYMENT PACKAGE - FILES INCLUDED
+================================================================================
+
+This document lists all files included in the deployment package.
+
+================================================================================
+  BACKEND FILES (api/ folder)
+================================================================================
+
+api/
+├── server.cjs                    # Main Express server file
+├── package.json                   # Production dependencies
+├── package-lock.json              # Lock file for dependencies
+├── .env.example                   # Environment variables template
+├── node_modules/                  # Pre-installed production dependencies
+│   ├── express/
+│   ├── mongoose/
+│   ├── cors/
+│   ├── dotenv/
+│   ├── nodemailer/
+│   ├── axios/
+│   └── ... (97 packages total)
+└── server/
+    └── services/
+        ├── smartyService.cjs      # Smarty Streets API service
+        ├── pharmacyService.cjs    # Pharmacy search service
+        ├── uspsService.cjs        # USPS API service (if used)
+        └── uspsAddresses3Service.cjs
+
+TOTAL BACKEND FILES: ~100+ files (including node_modules)
+
+================================================================================
+  FRONTEND FILES (public_html/ folder)
+================================================================================
+
+public_html/
+├── index.html                     # Main HTML file
+├── favicon.ico                    # Site icon
+├── .htaccess                      # Apache server configuration
+└── assets/
+    ├── index-349fc9eb.css        # Compiled CSS (17.65 KB)
+    └── index-822919b5.js          # Compiled JavaScript (519.77 KB)
+
+TOTAL FRONTEND FILES: 4 files
+
+================================================================================
+  DOCUMENTATION FILES
+================================================================================
+
+deploy/
+├── README.txt                     # Quick start guide
+├── DEPLOYMENT_INSTRUCTIONS.md    # Detailed deployment steps
+└── FILES_INCLUDED.txt            # This file
+
+================================================================================
+  FILE SIZES (Approximate)
+================================================================================
+
+Backend (api/):
+  - server.cjs: ~20 KB
+  - package.json: ~1 KB
+  - node_modules/: ~50-100 MB (pre-installed)
+  - Total: ~50-100 MB
+
+Frontend (public_html/):
+  - index.html: ~1 KB
+  - assets/: ~550 KB (compressed)
+  - .htaccess: ~3 KB
+  - Total: ~550 KB
+
+Documentation:
+  - README.txt: ~5 KB
+  - DEPLOYMENT_INSTRUCTIONS.md: ~15 KB
+  - Total: ~20 KB
+
+TOTAL PACKAGE SIZE: ~50-100 MB (mostly node_modules)
+
+================================================================================
+  WHAT'S PRE-INSTALLED
+================================================================================
+
+✅ All production dependencies are pre-installed in api/node_modules/
+   You DON'T need to run "npm install" on the server!
+
+✅ Frontend is pre-built and optimized
+   Ready to serve directly from public_html/
+
+✅ All configuration files are included
+   Just need to create .env file with your credentials
+
+================================================================================
+  WHAT YOU NEED TO DO
+================================================================================
+
+1. Set up MongoDB database (MongoDB Atlas recommended)
+2. Upload files to Hostinger
+3. Create .env file with your credentials
+4. Configure Node.js application in hPanel
+5. Install SSL certificate
+6. Test deployment
+
+See DEPLOYMENT_INSTRUCTIONS.md for detailed steps.
+
+================================================================================
+  VERIFICATION
+================================================================================
+
+After deployment, verify:
+- ✅ All files uploaded correctly
+- ✅ .env file created with correct values
+- ✅ Node.js application started
+- ✅ Frontend loads at your domain
+- ✅ API responds at /api/health
+- ✅ MongoDB connection successful
+
+================================================================================
+
