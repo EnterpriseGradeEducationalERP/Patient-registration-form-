@@ -1,0 +1,83 @@
+================================================================================
+  FTP UPLOAD CHECKLIST - nghc.nextgenproductlabs.com
+================================================================================
+
+FTP CONNECTION:
+---------------
+Host: ftp://82.180.140.60
+Username: u475081356.nghc.nextgenproductlabs.com
+Password: 996699@Admin
+Port: 21
+Root: public_html/
+
+================================================================================
+  FRONTEND FILES (Upload to: public_html/)
+================================================================================
+
+[ ] dist/index.html → public_html/index.html
+[ ] dist/favicon.ico → public_html/favicon.ico
+[ ] dist/assets/ (entire folder) → public_html/assets/
+[ ] .htaccess → public_html/.htaccess
+[ ] test-api-connection.html → public_html/test-api-connection.html
+
+================================================================================
+  BACKEND FILES (Upload to: public_html/api/)
+================================================================================
+
+[ ] Create folder: public_html/api/
+
+[ ] server.cjs → public_html/api/server.cjs
+[ ] api-package.json → public_html/api/package.json
+
+[ ] Create folder: public_html/api/server/services/
+
+[ ] server/services/pharmacyService.cjs → public_html/api/server/services/pharmacyService.cjs
+[ ] server/services/smartyService.cjs → public_html/api/server/services/smartyService.cjs
+[ ] server/services/uspsAddresses3Service.cjs → public_html/api/server/services/uspsAddresses3Service.cjs
+[ ] server/services/uspsService.cjs → public_html/api/server/services/uspsService.cjs
+
+[ ] Create file: public_html/api/.env (use .env.template content)
+
+================================================================================
+  VERIFICATION
+================================================================================
+
+After upload, verify these files exist:
+
+FRONTEND:
+[ ] public_html/index.html
+[ ] public_html/favicon.ico
+[ ] public_html/assets/index-210a054a.js
+[ ] public_html/assets/index-41e4e7e2.css
+[ ] public_html/.htaccess
+[ ] public_html/test-api-connection.html
+
+BACKEND:
+[ ] public_html/api/server.cjs
+[ ] public_html/api/package.json
+[ ] public_html/api/.env
+[ ] public_html/api/server/services/pharmacyService.cjs
+[ ] public_html/api/server/services/smartyService.cjs
+[ ] public_html/api/server/services/uspsAddresses3Service.cjs
+[ ] public_html/api/server/services/uspsService.cjs
+
+================================================================================
+  NEXT STEPS AFTER UPLOAD
+================================================================================
+
+1. Configure Node.js in hPanel:
+   - Application URL: nghc.nextgenproductlabs.com/api
+   - Application Root: /api or /public_html/api
+   - Startup File: server.cjs
+
+2. Install dependencies:
+   - Terminal: cd /api && npm install
+
+3. Start Node.js application
+
+4. Test:
+   - Frontend: https://nghc.nextgenproductlabs.com/
+   - API: https://nghc.nextgenproductlabs.com/api/health
+
+================================================================================
+
