@@ -92,9 +92,10 @@ Check that `dist/` folder contains:
 # Replace with your actual MongoDB connection string
 MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/NHS_NPMS?retryWrites=true&w=majority
 
-# Smarty Streets API (Optional - for address verification)
+# Smarty Streets API - Address Verification (CONFIGURED)
 SMARTY_AUTH_ID=1661d522-1b74-452f-bb63-463bdedd9fa3
 SMARTY_AUTH_TOKEN=SZkQ3ygTc5hiVL6RC9KR
+SMARTY_EMBEDDED_KEY=254574191005277116
 
 # Email Configuration (Gmail)
 # Use Gmail App Password: https://myaccount.google.com/apppasswords
@@ -148,6 +149,7 @@ PORT=3000
 MONGODB_URI=your-mongodb-connection-string
 SMARTY_AUTH_ID=1661d522-1b74-452f-bb63-463bdedd9fa3
 SMARTY_AUTH_TOKEN=SZkQ3ygTc5hiVL6RC9KR
+SMARTY_EMBEDDED_KEY=254574191005277116
 EMAIL_USER=your-email@gmail.com
 EMAIL_PASSWORD=your-gmail-app-password
 FRONTEND_URL=https://nghc.nextgenproductlabs.com
